@@ -246,7 +246,7 @@ while True:
         continue
         
     if dep: # Si la salida del dispositivo es válida
-        print("\rPotencia:\t {}W, En dirección:\t {}".format(power, cad), end='', flush=True)
+        #print("\rPotencia:\t {}W, En dirección:\t {}".format(power, cad), end='', flush=True)
     else:
         print("\rno se detecta trama válida, reintentando\t\t     ", end='', flush=True)
         time.sleep(1)

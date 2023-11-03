@@ -51,12 +51,11 @@ Description=Control de Potencia para Home Assistant
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /ruta/completa/a/Control_de_potencia.py
+ExecStart=/usr/bin/python3 /home/$(user)/ControlPotencia/Control_de_potencia.py
 Restart=always
-User=nombre_de_usuario
+User=$(user)
 Group=nombre_del_grupo
-Environment=PATH=/usr/bin:/usr/local/bin
-WorkingDirectory=/ruta/completa/a/
+WorkingDirectory=/home/$(user)/ControlPotencia/
 
 [Install]
 WantedBy=multi-user.target
