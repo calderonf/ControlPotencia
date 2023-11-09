@@ -13,10 +13,12 @@ device_list = [
     {"entity_id": "switch.habitacion_1", "power":75, "status": None, "beingControlled": False},
     {"entity_id": "switch.sala", "power":35, "status": None, "beingControlled": False},
     {"entity_id": "switch.comedor", "power":31, "status": None, "beingControlled": False},
-    {"entity_id": "light.pasillo1", "power":10, "status": None, "beingControlled": False},
-    {"entity_id": "light.pasillo9", "power":10, "status": None, "beingControlled": False},
+    {"entity_id": "light.pasillo1", "power":9, "status": None, "beingControlled": False},
+    {"entity_id": "light.pasillo9", "power":9, "status": None, "beingControlled": False},
     {"entity_id": "switch.hall", "power":12, "status": None, "beingControlled": False},
     {"entity_id": "switch.lavado", "power":30, "status": None, "beingControlled": False},
+    {"entity_id": "switch.chimenea_socket_1", "power":13, "status": None, "beingControlled": False},
+    {"entity_id": "switch.pacho_socket_1", "power":26, "status": None, "beingControlled": False},
     {"entity_id": "light.lampara", "power":10, "status": None, "beingControlled": False}
 ]
 #variables de requests
@@ -307,7 +309,10 @@ while True:
         end_time = time.time()
         elapsed_time = end_time - start_time
         if len(selected_devices) == 0:
-            print("Algo raro pasa no deberia entrar acá")
+            print("Uno de los dispositivos de control cambio de estado fuera del control de la app. ")
+            for device in updated_device_list:
+                if device["beingControlled"]:
+                    print(device)
         else:
             print("")
             print("Se toma accion de control, se apagan dispositivos encendidos por este control")
