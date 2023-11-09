@@ -3,10 +3,25 @@ import tinytuya
 import time
 import itertools
 from secrets import *
-
+device_list = [
+    {"entity_id": "switch.switch_entretenimiento", "power":18, "status": None, "beingControlled": False},
+    {"entity_id": "switch.cocina_switch_2", "power":20, "status": None, "beingControlled": False},
+    {"entity_id": "switch.habitacion_2", "power":20, "status": None, "beingControlled": False},
+    {"entity_id": "switch.dormitorio", "power":27, "status": None, "beingControlled": False},
+    {"entity_id": "switch.switch_oficina", "power":43, "status": None, "beingControlled": False},
+    {"entity_id": "switch.cocina_switch_1", "power":53, "status": None, "beingControlled": False},
+    {"entity_id": "switch.habitacion_1", "power":75, "status": None, "beingControlled": False},
+    {"entity_id": "switch.sala", "power":35, "status": None, "beingControlled": False},
+    {"entity_id": "switch.comedor", "power":31, "status": None, "beingControlled": False},
+    {"entity_id": "light.pasillo1", "power":10, "status": None, "beingControlled": False},
+    {"entity_id": "light.pasillo9", "power":10, "status": None, "beingControlled": False},
+    {"entity_id": "switch.hall", "power":12, "status": None, "beingControlled": False},
+    {"entity_id": "switch.lavado", "power":30, "status": None, "beingControlled": False},
+    {"entity_id": "light.lampara", "power":10, "status": None, "beingControlled": False}
+]
 #variables de requests
 
-
+time.sleep(5)
 def ask_for_device(entity_id):
     """Consulta el estado de un interruptor en Home Assistant y devuelve True si está encendido, False si está apagado. o None si no lo encuentra"""
     url = f"{BASE_URL}/states/{entity_id}"
@@ -245,9 +260,9 @@ while True:
         time.sleep(30)
         continue
         
-    if dep: # Si la salida del dispositivo es válida
-        #print("\rPotencia:\t {}W, En dirección:\t {}".format(power, cad), end='', flush=True)
-    else:
+    if not dep: # Si la salida del dispositivo es válida
+        #    print("\rPotencia:\t {}W, En dirección:\t {}".format(power, cad), end='', flush=True)
+        #else:
         print("\rno se detecta trama válida, reintentando\t\t     ", end='', flush=True)
         time.sleep(1)
         continue
